@@ -12,13 +12,17 @@ function HomePage() {
 		'jest', 'docker', 'aws', 'firebase', 'redux', 'graphql'
 	];
 
-	// Function to toggle dark mode
-	const toggleDarkMode = () => {
-		setIsDarkMode(prevMode => !prevMode);
-	};
+    const handleThemes = () => {
+        setIsDarkMode(c => !c);
+    }
 
 	return (
-		<div className="flex h-screen w-full">
+		<div className={`flex h-screen w-full ${isDarkMode ? "bg-black text-white" : "bg-white text-black"}`}>
+            <button onClick={handleThemes}>
+                {
+                    isDarkMode ? "Light" : "Dark"
+                }
+            </button>
 			<div className="flex items-center justify-center">
 				<IconCloud iconSlugs={iconSlugs} isDarkMode={isDarkMode} />
 			</div>
