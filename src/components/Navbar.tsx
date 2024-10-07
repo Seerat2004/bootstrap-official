@@ -34,7 +34,7 @@ export default function Navbar() {
         <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md' : 'bg-transparent'}`}>
             <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
-                    <a href="/" className="flex items-center space-x-2" onClick={(e) => { handleNavigation('/'); }}>
+                    <a href="/" className="flex items-center space-x-2" onClick={() => { handleNavigation('/'); }}>
                         <Star className="h-6 w-6 text-blue-600" />
                         <span className="font-bold text-xl text-blue-900">ClubConnect</span>
                     </a>
@@ -45,7 +45,7 @@ export default function Navbar() {
                             <a
                                 key={item.name}
                                 href={item.href}
-                                onClick={(e) => { handleNavigation(item.href); }}
+                                onClick={() => { handleNavigation(item.href); }}
                                 className={`text-sm font-medium transition-colors hover:text-blue-600 ${activePath === item.href ? 'text-blue-600' : 'text-blue-900'
                                     }`}
                             >
