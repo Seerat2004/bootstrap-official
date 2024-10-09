@@ -1,8 +1,12 @@
+import TypingAnimation from "@/components/ui/typing-animation";
+
 const AboutUs = () => {
     return (
-        <div>
-            About Us Page by Seerat
-        </div>
+
+    <TypingAnimation
+      className="text-4xl font-bold text-black dark:text-white"
+      text="Typing Animation"
+    />
     )
 }
 
