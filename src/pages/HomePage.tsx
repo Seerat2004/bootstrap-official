@@ -29,6 +29,10 @@ function HomePage() {
 	  </div>
 	</section>
 	<section className="container mx-auto py-12">
+		<div className="bg-gray-200 h-[600px]"></div> 
+</section>
+
+	<section className="container mx-auto py-12">
 	  <div className="flex justify-between items-center">
 		<div className="w-1/2 bg-gray-200 h-64"></div>
 		<div className="max-w-md">

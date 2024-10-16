@@ -10,25 +10,25 @@ const JoinUs = () => {
                 <div className="md:w-1/2 max-w-screen-md space-y-6 mr-2">
                     <GradualSpacing
                     className="font-display text-left  font-bold -tracking-widest  text-white dark:text-white md:text-5xl md:leading-[10rem]"
-                    text="Join Bootstarp Today!"
+                    text="Join Bootstrap Today!"
     />
                     <p className="text-lg font-light leading-relaxed">
                         Are you passionate about technology, innovation, and collaboration? 
                         Do you want to be part of exciting events and grow both professionally and personally?
-                        Bootstarp, an organization at Lovely Professional University, is the perfect platform for students to enhance their skills, network with peers, and contribute to a thriving community. There's a place for everyone—whether you're into coding, event management, design, or simply exploring opportunities!
+                        Bootstrap, an organization at Lovely Professional University, is the perfect platform for students to enhance their skills, network with peers, and contribute to a thriving community. There's a place for everyone—whether you're into coding, event management, design, or simply exploring opportunities!
                     </p>
                     <a href="#joinForm" className="inline-block bg-white text-indigo-900 hover:bg-indigo-50 transition-colors px-6 py-3 rounded-full font-semibold shadow-md">
                         Join Us Now!
                     </a>
                 </div>
                 <div className="md:w-1/2 w-full mt-10 md:mt-0 flex items-center justify-center">
-                    <img src="path-to-your-image.jpg" alt="Join Bootstarp" className="h-80 w-full object-cover rounded-lg shadow-lg" />
+                    <img src="path-to-your-image.jpg" alt="Join Bootstrap" className="h-80 w-full object-cover rounded-lg shadow-lg" />
                 </div>
             </div>
         </section>
         <section className="bg-white py-16">
             <div className="max-w-7xl mx-auto text-center">
-                <h2 className="text-4xl font-bold mb-8 text-gray-800">Why Join Bootstarp?</h2>
+                <h2 className="text-4xl font-bold mb-8 text-gray-800">Why Join Bootstrap?</h2>
                 <div className="flex flex-col md:flex-row justify-between">
                     <div className="md:w-1/3 p-6">
                         <h3 className="text-xl font-semibold text-indigo-900 mb-4">Hands-on Experience</h3>
@@ -82,7 +82,7 @@ const JoinUs = () => {
                     Fill out the form below, and we’ll get in touch with more details on how you can get involved!
                 </p>
                 <div id="joinForm" className="max-w-screen-md mx-auto bg-gray-100 p-10 rounded-lg shadow-md">
-                    <h3 className="text-2xl font-bold mb-6 text-gray-800 text-center">Join Bootstarp</h3>
+                    <h3 className="text-2xl font-bold mb-6 text-gray-800 text-center">Join Bootstrap</h3>
                     <form className="space-y-6">
                         <div>
                             <label className="block text-left font-medium mb-2">Name</label>
