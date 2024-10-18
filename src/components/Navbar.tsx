@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Star, Menu, X } from 'lucide-react'
 import { useNavigate } from 'react-router-dom';
+import { ModeToggle } from './mode-toggle';
 
 const navItems = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/aboutus' },
     { name: 'Events', href: '/events' },
-    { name: 'Join Us', href: '/joinus' },
     { name: 'Contact', href: '/contactus' },
 ]
 
@@ -36,22 +36,25 @@ export default function Navbar() {
                 <div className="flex items-center justify-between h-16">
                     <a href="/" className="flex items-center space-x-2" onClick={() => { handleNavigation('/'); }}>
                         <Star className="h-6 w-6 text-blue-600" />
-                        <span className="font-bold text-xl text-blue-900">ClubConnect</span>
+                        <span className="font-bold text-xl text-blue-900">BootStrap</span>
                     </a>
 
                     {/* Desktop menu */}
-                    <div className="hidden md:flex space-x-4">
-                        {navItems.map((item) => (
-                            <a
-                                key={item.name}
-                                href={item.href}
-                                onClick={() => { handleNavigation(item.href); }}
-                                className={`text-sm font-medium transition-colors hover:text-blue-600 ${activePath === item.href ? 'text-blue-600' : 'text-blue-900'
-                                    }`}
-                            >
-                                {item.name}
-                            </a>
-                        ))}
+                    <div className="hidden md:flex space-x-4 items-center justify-center">
+                        {
+                            navItems.map((item) => (
+                                <a
+                                    key={item.name}
+                                    href={item.href}
+                                    onClick={() => { handleNavigation(item.href); }}
+                                    className={`text-sm font-medium transition-colors hover:text-blue-600 ${activePath === item.href ? 'text-blue-600' : 'text-blue-900'
+                                        }`}
+                                >
+                                    {item.name}
+                                </a>
+                            ))
+                        }
+                        <ModeToggle />
                         <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">
                             Join Now
                         </button>
@@ -64,7 +67,15 @@ export default function Navbar() {
                             aria-label="Toggle menu"
                             className="text-blue-900 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 rounded-md"
                         >
-                            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                            {
+                                isOpen ? 
+                                        <X className="h-6 w-6" /> 
+                                    : 
+                                        <div className="flex items-center justify-center gap-4">
+                                            <ModeToggle />
+                                            <Menu size={32} />
+                                        </div>
+                            }
                         </button>
                     </div>
                 </div>
