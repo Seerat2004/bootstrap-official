@@ -18,7 +18,7 @@ const ContactUs = () => {
     };
 
     return (
-        <div className="flex flex-col md:flex-row justify-between px-16 py-40 bg-white mt-8 shadow-md">
+        <div className="flex flex-col md:flex-row justify-between px-16 py-40 bg-white shadow-md">
             <div className="md:w-2/5 mb-8 md:mb-0 mr-10">
                 <h3 className="text-3xl font-semibold mb-4 text-gray-900">Contact Us</h3>
                 <p className="mb-6 text-gray-500">
