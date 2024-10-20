@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { Linkedin, Instagram, Twitter } from "lucide-react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const ContactUs = () => {
     const [formData, setFormData] = useState({
@@ -18,37 +21,39 @@ const ContactUs = () => {
     };
 
     return (
-        <div className="flex flex-col md:flex-row justify-between px-16 py-40 bg-white shadow-md">
-            <div className="md:w-2/5 mb-8 md:mb-0 mr-10">
-                <h3 className="text-3xl font-semibold mb-4 text-gray-900">Contact Us</h3>
-                <p className="mb-6 text-gray-500">
+        <motion.div 
+            className="flex flex-col md:flex-row justify-between px-16 py-32"
+            initial={{ opacity: 0, y: 20 }}
+			whileInView={{ opacity: 1, y: 0 }}
+			transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
+        >
+            <div className="md:w-2/5 md:mb-0 mr-10 text-black dark:text-white">
+                <h3 className="text-3xl font-semibold mb-4">Contact Us</h3>
+                <p className="mb-6">
                     Fill out the form and our team will reach out to you within 1-2 business days.
                 </p>
-                <p className="mb-6 text-gray-500">Click the button below to schedule a meeting with us.</p>
-                <button className="bg-indigo-900 text-white py-3 px-20 mb-8 hover:bg-indigo-800 transition-colors">
+                <p className="mb-6">Click the button below to schedule a meeting with us.</p>
+                <button className="bg-purple-700 rounded-lg text-white py-3 px-20 mb-8 hover:bg-indigo-800 transition-colors">
                     Talk with us
                 </button>
                 <hr />
                 <div className="mt-6">
-                    <h4 className="font-semibold text-lg text-gray-700 mb-2">Email</h4>
-                    <p className="text-gray-600">bootstraplpu@gmail.com</p>
+                    <h4 className="font-semibold text-lg mb-2">Email</h4>
+                    <p className="">bootstraplpu@gmail.com</p>
                 </div>
                 <hr className="my-6" />
                 <div>
-                    <h4 className="font-semibold text-lg text-gray-700 mb-4">Social</h4>
+                    <h4 className="font-semibold text-lg mb-4">Social</h4>
                     <div className="flex space-x-6">
-                        <a href="#" className="text-gray-500 hover:text-indigo-800 transition-colors">
-                            <i className="fab fa-facebook-f">Facebook</i>
-                        </a>
-                        <a href="#" className="text-gray-500 hover:text-indigo-800 transition-colors">
-                            <i className="fab fa-linkedin-in">LinkedIn</i>
-                        </a>
-                        <a href="#" className="text-gray-500 hover:text-indigo-800 transition-colors">
-                            <i className="fab fa-instagram">Instagram</i>
-                        </a>
-                        <a href="#" className="text-gray-500 hover:text-indigo-800 transition-colors">
-                            <i className="fab fa-twitter">Twitter</i>
-                        </a>
+                        <Link to="#" className="text-gray-500 hover:text-indigo-800 transition-colors">
+                            <Linkedin />
+                        </Link>
+                        <Link to="#" className="text-gray-500 hover:text-indigo-800 transition-colors">
+                            <Instagram />
+                        </Link>
+                        <Link to="#" className="text-gray-500 hover:text-indigo-800 transition-colors">
+                            <Twitter />
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -95,13 +100,13 @@ const ContactUs = () => {
 
                     <button
                         type="submit"
-                        className="bg-indigo-900 text-white py-3 px-10  hover:bg-indogo-600 transition-colors"
+                        className="bg-purple-700 rounded-lg text-white py-3 px-10  hover:bg-indogo-600 transition-colors"
                     >
                         Send Message
                     </button>
                 </form>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

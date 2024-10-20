@@ -1,119 +1,130 @@
-import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Star, Menu, X } from 'lucide-react'
-import { useNavigate } from 'react-router-dom';
-import { ModeToggle } from './mode-toggle';
+"use client"
+
+import * as React from "react"
+import { Menu } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { ModeToggle } from "./mode-toggle";
+import logo from "../assets/images/logo.png";
 
 const navItems = [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '/aboutus' },
-    { name: 'Events', href: '/events' },
-    { name: 'Contact', href: '/contactus' },
+    { name: "Home", href: "/" },
+    { name: "About", href: "/aboutus" },
+    { name: "Events", href: "/events" },
+    { name: "Contact", href: "/contactus" },
 ]
 
 export default function Navbar() {
-    const [isOpen, setIsOpen] = useState(false);
-    const [isScrolled, setIsScrolled] = useState(false);
-    const [activePath, setActivePath] = useState('/');
-    const navigate = useNavigate();
+    const [isScrolled, setIsScrolled] = React.useState(false)
+    const [activePath, setActivePath] = React.useState("/")
+    const navigate = useNavigate()
 
-    useEffect(() => {
+    React.useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 10)
         }
-        window.addEventListener('scroll', handleScroll)
-        return () => window.removeEventListener('scroll', handleScroll)
+        window.addEventListener("scroll", handleScroll)
+        return () => window.removeEventListener("scroll", handleScroll)
     }, [])
 
     const handleNavigation = (href: string) => {
         setActivePath(href)
-        navigate(href);
+        navigate(href)
     }
 
     return (
-        <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md' : 'bg-transparent'}`}>
+        <header
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+                    ? "bg-background/70 backdrop-blur-lg supports-[backdrop-filter]:bg-background/60 shadow-lg"
+                    : "bg-transparent"
+                }`}
+        >
             <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between h-16">
-                    <a href="/" className="flex items-center space-x-2" onClick={() => { handleNavigation('/'); }}>
-                        <Star className="h-6 w-6 text-blue-600" />
-                        <span className="font-bold text-xl text-blue-900">BootStrap</span>
+                <div className="flex items-center justify-between h-20">
+                    <a
+                        href="/"
+                        className="flex items-center space-x-2"
+                        onClick={(e) => {
+                            e.preventDefault()
+                            handleNavigation("/")
+                        }}
+                    >
+                        <img 
+                            src={logo}
+                            alt="Mian Logo"
+                            height={50}
+                            width={50}
+                            className="rounded-full"
+                        />
+                        <span className="font-bold text-2xl bg-clip-text text-black dark:text-white">
+                            BootStrap
+                        </span>
                     </a>
 
-                    {/* Desktop menu */}
-                    <div className="hidden md:flex space-x-4 items-center justify-center">
-                        {
-                            navItems.map((item) => (
-                                <a
-                                    key={item.name}
-                                    href={item.href}
-                                    onClick={() => { handleNavigation(item.href); }}
-                                    className={`text-sm font-medium transition-colors hover:text-blue-600 ${activePath === item.href ? 'text-blue-600' : 'text-blue-900'
-                                        }`}
-                                >
-                                    {item.name}
-                                </a>
-                            ))
-                        }
+                    <div className="hidden md:flex space-x-1 items-center bg-muted/50 backdrop-blur-sm rounded-full px-2 py-1">
+                        {navItems.map((item) => (
+                            <Button
+                                key={item.name}
+                                variant="ghost"
+                                className={`text-sm font-medium transition-colors hover:text-primary rounded-full ${activePath === item.href
+                                        ? "bg-primary/10 text-primary"
+                                        : "text-muted-foreground hover:bg-muted"
+                                    }`}
+                                onClick={() => handleNavigation(item.href)}
+                            >
+                                {item.name}
+                            </Button>
+                        ))}
                         <ModeToggle />
-                        <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">
-                            Join Now
-                        </button>
                     </div>
-
-                    {/* Mobile menu button */}
-                    <div className="md:hidden">
-                        <button
-                            onClick={() => setIsOpen(!isOpen)}
-                            aria-label="Toggle menu"
-                            className="text-blue-900 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 rounded-md"
+                    
+                    <Link to="/joinus">
+                        <Button
+                            className="hidden md:inline-flex hover:from-primary-foreground hover:to-primary text-primary-foreground"
                         >
-                            {
-                                isOpen ? 
-                                        <X className="h-6 w-6" /> 
-                                    : 
-                                        <div className="flex items-center justify-center gap-4">
-                                            <ModeToggle />
-                                            <Menu size={32} />
-                                        </div>
-                            }
-                        </button>
+                            Join Now
+                        </Button>
+                    </Link>
+
+                    <div className="md:hidden flex items-center space-x-4">
+                        <ModeToggle />
+                        <Sheet>
+                            <SheetTrigger asChild>
+                                <Button variant="outline" size="icon" className="rounded-full">
+                                    <Menu className="h-5 w-5" />
+                                    <span className="sr-only">Toggle menu</span>
+                                </Button>
+                            </SheetTrigger>
+                            <SheetContent>
+                                <SheetHeader>
+                                    <SheetTitle>Menu</SheetTitle>
+                                </SheetHeader>
+                                <div className="grid gap-4 py-4 w-full">
+                                    {navItems.map((item) => (
+                                        <Button
+                                            key={item.name}
+                                            variant="ghost"
+                                            className={`justify-start ${activePath === item.href ? "text-primary" : "text-muted-foreground"
+                                                }`}
+                                            onClick={() => {
+                                                handleNavigation(item.href)
+                                            }}
+                                        >
+                                            {item.name}
+                                        </Button>
+                                    ))}
+                                    <Link to="/joinus" className="w-full">
+                                        <Button className="w-full bg-gradient-to-r from-primary to-primary-foreground hover:from-primary-foreground hover:to-primary text-primary-foreground">
+                                            Join Now
+                                        </Button>
+                                    </Link>
+                                </div>
+                            </SheetContent>
+                        </Sheet>
                     </div>
                 </div>
             </nav>
-
-            {/* Mobile menu */}
-            <AnimatePresence>
-                {isOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="md:hidden bg-white border-t border-gray-200"
-                    >
-                        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                            {navItems.map((item) => (
-                                <a
-                                    key={item.name}
-                                    href={item.href}
-                                    onClick={(e) => { e.preventDefault(); handleNavigation(item.href); }}
-                                    className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${activePath === item.href
-                                            ? 'bg-blue-100 text-blue-600'
-                                            : 'text-blue-900 hover:bg-blue-50 hover:text-blue-600'
-                                        }`}
-                                >
-                                    {item.name}
-                                </a>
-                            ))}
-                            <div className="mt-4 px-3">
-                                <button className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-base font-medium transition-colors">
-                                    Join Now
-                                </button>
-                            </div>
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
         </header>
     )
 }
