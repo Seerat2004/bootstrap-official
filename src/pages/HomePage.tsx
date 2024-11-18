@@ -154,7 +154,6 @@ export default function HomePage() {
 					</div>
 				</div>
 			</motion.section>
-
 			<motion.section
 				id="featured-event"
 				className="py-24 px-4 text-black dark:text-white"
@@ -198,7 +197,6 @@ export default function HomePage() {
 					</div>
 				</div>
 			</motion.section>
-
 			<motion.section
 				id="community"
 				className="py-24 px-4 bg-purple-100 rounded-lg"
@@ -239,7 +237,6 @@ export default function HomePage() {
 					</div>
 				</div>
 			</motion.section>
-
 			<motion.section
 				id="testimonials"
 				className="py-24 px-4"
@@ -273,7 +270,6 @@ export default function HomePage() {
 					</div>
 				</div>
 			</motion.section>
-
 			<motion.section
 				id="faq"
 				className="py-24 px-4 bg-gradient-to-b from-purple-100 to-white rounded-lg"
