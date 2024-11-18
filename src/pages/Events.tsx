@@ -1,4 +1,4 @@
-import { CalendarDays, MapPin, ArrowRight } from 'lucide-react';
+import { CalendarDays, MapPin } from 'lucide-react';
 import eventImage from "../assets/images/mainpage.jpg";
 import { motion } from 'framer-motion';
 import bachelorGotLatent from "@/assets/images/Untitled design (2).png";
@@ -86,31 +86,31 @@ const Events = () => {
 					<h2 className="text-3xl font-semibold mb-8 text-indigo-950 dark:text-indigo-100">Featured Events</h2>
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
 						{
-						upcomingEvents.map((event, index) => (
-							<div
-								key={event.id}
-								className={`bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl`}
-								style={{ animationDelay: `${index * 150}ms` }}
-							>
-								<img
-									src={event.imageUrl}
-									alt={event.title}
-									className="w-full h-72 object-cover"
-								/>
-								<div className="p-6">
-									<h3 className="text-2xl font-semibold mb-2 text-indigo-950">{event.title}</h3>
-									<p className="text-gray-600 mb-4">{event.description}</p>
-									<div className="flex items-center text-gray-500 mb-2">
-										<CalendarDays className="w-5 h-5 mr-2" />
-										<span>{event.date}</span>
-									</div>
-									<div className="flex items-center text-gray-500 mb-4">
-										<MapPin className="w-5 h-5 mr-2" />
-										<span>{event.location}</span>
+							upcomingEvents.map((event, index) => (
+								<div
+									key={event.id}
+									className={`bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl`}
+									style={{ animationDelay: `${index * 150}ms` }}
+								>
+									<img
+										src={event.imageUrl}
+										alt={event.title}
+										className="w-full h-72 object-cover"
+									/>
+									<div className="p-6">
+										<h3 className="text-2xl font-semibold mb-2 text-indigo-950">{event.title}</h3>
+										<p className="text-gray-600 mb-4">{event.description}</p>
+										<div className="flex items-center text-gray-500 mb-2">
+											<CalendarDays className="w-5 h-5 mr-2" />
+											<span>{event.date}</span>
+										</div>
+										<div className="flex items-center text-gray-500 mb-4">
+											<MapPin className="w-5 h-5 mr-2" />
+											<span>{event.location}</span>
+										</div>
 									</div>
 								</div>
-							</div>
-						))
+							))
 						}
 					</div>
 				</motion.section>
