@@ -33,18 +33,16 @@ const AboutUs = () => {
 				<div className="size-full max-w-lg items-center justify-center overflow-hidden pt-8">
 					<BoxReveal boxColor={"#5046e6"} duration={0.9}>
 						<p className="text-[3.5rem] font-semibold">
-							Magic UI<span className="text-[#5046e6]">.</span>
+							BootStrap<span className="text-[#5046e6]">.</span>
 						</p>
 					</BoxReveal>
-
 					<BoxReveal boxColor={"#5046e6"} duration={0.9}>
 						<h2 className="mt-[.5rem] text-[1rem]">
-							UI library for{" "}
-							<span className="text-[#5046e6]">Design Engineers</span>
+							A place for students{" "}
+							<span className="text-[#5046e6]">To Grow</span>
 						</h2>
 					</BoxReveal>
-
-					<BoxReveal boxColor={"#5046e6"} duration={0.9}>
+					{/* <BoxReveal boxColor={"#5046e6"} duration={0.9}>
 						<div className="mt-6">
 							<p>
 								-&gt; 20+ free and open-source animated components built with
@@ -57,8 +55,7 @@ const AboutUs = () => {
 								-&gt; 100% open-source, and customizable. <br />
 							</p>
 						</div>
-					</BoxReveal>
-
+					</BoxReveal> */}
 					<BoxReveal boxColor={"#5046e6"} duration={0.5}>
 						<Button className="mt-[1.6rem] bg-[#5046e6] mb-10">Explore</Button>
 					</BoxReveal>

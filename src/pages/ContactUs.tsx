@@ -33,9 +33,9 @@ const ContactUs = () => {
                     Fill out the form and our team will reach out to you within 1-2 business days.
                 </p>
                 <p className="mb-6">Click the button below to schedule a meeting with us.</p>
-                <button className="bg-purple-700 rounded-lg text-white py-3 px-20 mb-8 hover:bg-indigo-800 transition-colors">
+                <Link to="mailto:bootstraplpu@gmail.com" className="bg-purple-700 rounded-lg text-white py-3 px-20 mb-8 hover:bg-indigo-800 transition-colors">
                     Talk with us
-                </button>
+                </Link>
                 <hr />
                 <div className="mt-6">
                     <h4 className="font-semibold text-lg mb-2">Email</h4>

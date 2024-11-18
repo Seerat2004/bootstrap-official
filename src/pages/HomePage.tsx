@@ -4,37 +4,75 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { CalendarCheck, Mail, MapPin, Users, ArrowRight, Trophy, MessageCircle } from "lucide-react"
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
+import ShimmerButton from "@/components/ui/shimmer-button";
+import featuredEvent from "@/assets/images/featuredEvents.jpeg";
+import { Link } from "react-router-dom";
+import rangoliEvent from "@/assets/images/rangoliImage.jpeg";
+import gamingEvent from "@/assets/images/gamingEvent.jpeg";
+
+const upcomingEvents = [
+	{
+		id: 1,
+		name: "Gaming Zone",
+		description: "Take a break and Fuel up your mind playing new games while having an chance to win handsome amount of money.",
+		image: gamingEvent,
+		date: "29 November, 24"
+	},
+	{
+		id: 2,
+		name: "Rangoli Competition",
+		description: "Join us in rangoli competition, one of the greatest event in the LPU, be a part of it.",
+		image: rangoliEvent,
+		date: "25 November, 24"
+	},
+]
 
 export default function HomePage() {
 	return (
 		<main className="flex-1 flex flex-col pt-20 gap-10">
 			<motion.section
 				id="hero"
-				className="rounded-lg relative overflow-hidden py-24 md:py-32 text-white bg-opacity-50"
+				className="rounded-lg relative overflow-hidden py-6 text-white bg-opacity-50"
 				initial={{ opacity: 0, y: -20 }}
 				whileInView={{ opacity: 1, y: 0 }}
 				transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
 			>
 				<div className="container mx-auto px-4">
-					<div className="flex flex-col justify-between items-center w-full lg:w-2/3 mx-auto gap-8 text-center">
-						<h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-black tracking-tight mb-4">
-							Show Your Passion for Innovation and Events
-						</h1>
-						<p className="text-xl text-purple-400 mb-6 max-w-2xl">
-							Join us at Bootstarp for engaging events, fostering innovation, and building a vibrant community at Lovely Professional University.
-						</p>
-						<Button size="lg" className="group bg-white text-purple-900 hover:bg-purple-100">
-							Register Now
-							<ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-						</Button>
+					<div className="flex flex-col lg:flex-row items-center justify-center gap-12">
+						<div className="flex flex-col justify-between items-center lg:items-start w-full lg:w-1/2 gap-4 text-center lg:text-left">
+							<h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-black tracking-tight mb-4">
+								Show Your Passion for Innovation and Events
+							</h1>
+							<p className="text-xl text-black dark:text-white mb-6 max-w-2xl">
+								Join us at Bootstarp for engaging events, fostering innovation, and building a vibrant community at Lovely Professional University.
+							</p>
+							<Link to="/joinus">
+								<ShimmerButton className="">
+									Register Now
+									<ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+								</ShimmerButton>
+							</Link>
+						</div>
+						<div className="w-full lg:w-1/2">
+							<motion.div
+								initial={{ opacity: 0, scale: 0.9 }}
+								whileInView={{ opacity: 1, scale: 1 }}
+								transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
+								className="h-[500px] rounded-2xl"
+							>
+								<img
+									src={featuredEvent}
+									alt="Tech event with people collaborating"
+									className="w-full h-full rounded-2xl transform hover:scale-105 transition-transform duration-500"
+								/>
+							</motion.div>
+						</div>
 					</div>
 				</div>
-				<div className="absolute inset-0 -z-10 h-full w-full bg-purple-900 [background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#9333ea_100%)]" />
 			</motion.section>
-
-			<motion.section 
-				id="about" 
-				className="py-24 px-4 to-white" 
+			<motion.section
+				id="about"
+				className="py-24 px-4 to-white"
 				initial={{ opacity: 0, y: 20 }}
 				whileInView={{ opacity: 1, y: 0 }}
 				transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
@@ -53,10 +91,10 @@ export default function HomePage() {
 						</div>
 						<div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
 							{[
-								{ title: "50+", content: "Events Organized", icon: CalendarCheck },
-								{ title: "1000+", content: "Active Members", icon: Users },
-								{ title: "20+", content: "Industry Partners", icon: MapPin },
-								{ title: "5", content: "Years of Excellence", icon: Trophy },
+								{ title: "3+", content: "Events Organized", icon: CalendarCheck },
+								{ title: "40+", content: "Active Members", icon: Users },
+								{ title: "5+", content: "Industry Partners", icon: MapPin },
+								{ title: "1", content: "Years of Excellence", icon: Trophy },
 							].map((item, index) => (
 								<Card key={index} className="text-center hover:shadow-lg transition-shadow bg-white">
 									<CardHeader>
@@ -70,44 +108,56 @@ export default function HomePage() {
 					</div>
 				</div>
 			</motion.section>
-
-			<motion.section 
-				id="events" 
-				className="py-24 px-4 bg-purple-100 rounded-lg" 
+			<motion.section
+				id="events"
+				className="py-24 px-4 bg-purple-100 rounded-lg"
 				initial={{ opacity: 0, y: 20 }}
 				whileInView={{ opacity: 1, y: 0 }}
 				transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
 			>
 				<div className="container mx-auto">
 					<h2 className="text-3xl font-bold mb-12 text-center text-purple-900">Upcoming Events</h2>
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-						{[1, 2, 3].map((i) => (
-							<Card key={i} className="hover:shadow-xl transition-shadow bg-white">
-								<CardHeader>
-									<CardTitle className="text-purple-900">Tech Symposium {i}</CardTitle>
-								</CardHeader>
-								<CardContent>
-									<p className="mb-4 text-purple-700">Join us for an exciting day of technology talks and networking.</p>
-									<div className="flex items-center text-sm text-purple-600">
-										<CalendarCheck className="mr-2 h-4 w-4" />
-										<span>May {10 + i}, 2024</span>
-									</div>
-								</CardContent>
-							</Card>
-						))}
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+						{
+							upcomingEvents.map((event, index) => {
+								return (
+									<Card key={index} className="hover:shadow-xl transition-shadow bg-white">
+										<CardHeader>
+											<CardTitle className="text-purple-900">
+												<img
+													src={event.image}
+													alt={event.name}
+													className="h-[400px] w-full"
+												/>
+											</CardTitle>
+										</CardHeader>
+										<CardContent className="flex flex-col gap-2">
+											<h1 className="text-xl font-medium">{event.name}</h1>
+											<p className="mb-4 text-purple-700">{event.description}</p>
+											<div className="flex items-center text-sm text-purple-600">
+												<CalendarCheck className="mr-2 h-4 w-4" />
+												<span>{event.date}</span>
+											</div>
+										</CardContent>
+									</Card>
+								)
+							})
+						}
 					</div>
 					<div className="text-center mt-12">
-						<Button variant="outline" className="group text-purple-900 dark:text-white border-purple-900 hover:bg-purple-100">
-							View All Events
-							<ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-						</Button>
+						<Link to="/events">
+							<Button variant="outline" className="group text-purple-900 dark:text-white border-purple-900 hover:bg-purple-100">
+								View All Events
+								<ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+							</Button>
+						</Link>
 					</div>
 				</div>
 			</motion.section>
 
-			<motion.section 
-				id="featured-event" 
-				className="py-24 px-4 text-black dark:text-white" 
+			<motion.section
+				id="featured-event"
+				className="py-24 px-4 text-black dark:text-white"
 				initial={{ opacity: 0, y: 20 }}
 				whileInView={{ opacity: 1, y: 0 }}
 				transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
@@ -149,13 +199,13 @@ export default function HomePage() {
 				</div>
 			</motion.section>
 
-			<motion.section 
-				id="community" 
-				className="py-24 px-4 bg-purple-100 rounded-lg" 
+			<motion.section
+				id="community"
+				className="py-24 px-4 bg-purple-100 rounded-lg"
 				initial={{ opacity: 0, y: 20 }}
 				whileInView={{ opacity: 1, y: 0 }}
 				transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
-			> 
+			>
 				<div className="container mx-auto">
 					<h2 className="text-3xl font-bold mb-12 text-center text-purple-900">Join Our Community</h2>
 					<div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center p-6">
@@ -190,9 +240,9 @@ export default function HomePage() {
 				</div>
 			</motion.section>
 
-			<motion.section 
-				id="testimonials" 
-				className="py-24 px-4" 
+			<motion.section
+				id="testimonials"
+				className="py-24 px-4"
 				initial={{ opacity: 0, y: 20 }}
 				whileInView={{ opacity: 1, y: 0 }}
 				transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
@@ -224,9 +274,9 @@ export default function HomePage() {
 				</div>
 			</motion.section>
 
-			<motion.section 
-				id="faq" 
-				className="py-24 px-4 bg-gradient-to-b from-purple-100 to-white rounded-lg" 
+			<motion.section
+				id="faq"
+				className="py-24 px-4 bg-gradient-to-b from-purple-100 to-white rounded-lg"
 				initial={{ opacity: 0, y: 20 }}
 				whileInView={{ opacity: 1, y: 0 }}
 				transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}

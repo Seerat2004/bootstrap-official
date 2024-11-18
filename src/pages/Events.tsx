@@ -1,34 +1,36 @@
 import { CalendarDays, MapPin, ArrowRight } from 'lucide-react';
 import eventImage from "../assets/images/mainpage.jpg";
 import { motion } from 'framer-motion';
+import bachelorGotLatent from "@/assets/images/Untitled design (2).png";
+import rangoliEvent from "@/assets/images/rangoliImage.jpeg";
+import gamingEvent from "@/assets/images/gamingEvent.jpeg";
 
 const upcomingEvents: Event[] = [
 	{
 		id: 1,
-		title: 'Tech Hackathon 2024',
-		date: 'March 15-17, 2024',
+		title: 'Bachelors got Latent',
+		date: '29 November, 2024',
+		location: 'Uni Auditorium',
+		description: 'A show featuring a lots of talents with the laughter from our judges and with an unique point system.',
+		imageUrl: bachelorGotLatent,
+	},
+	{
+		id: 1,
+		title: 'Rangoli Competition',
+		date: '25 November, 2024',
 		location: 'LPU Campus, Block 32',
-		description: 'Join us for a 48-hour coding marathon to solve real-world problems!',
-		imageUrl: eventImage,
+		description: 'Join us in rangoli competition, one of the greatest event in the LPU, be a part of it.',
+		imageUrl: rangoliEvent,
 	},
 	{
 		id: 2,
-		title: 'AI Workshop Series',
-		date: 'April 5-7, 2024',
+		title: 'Gaming Zone',
+		date: '29 November, 2024',
 		location: 'Online (Zoom)',
-		description: 'Learn about the latest advancements in AI from industry experts.',
-		imageUrl: eventImage,
-	},
-	{
-		id: 3,
-		title: 'BootStrap Annual Tech Fest',
-		date: 'May 20-22, 2024',
-		location: 'LPU Auditorium',
-		description: 'Our flagship event featuring tech talks, workshops, and networking opportunities.',
-		imageUrl: eventImage,
-	},
+		description: 'Take a break and Fuel up your mind playing new games while having an chance to win handsome amount of money.',
+		imageUrl: gamingEvent,
+	}
 ];
-
 const pastEvents: Event[] = [
 	{
 		id: 4,
@@ -74,7 +76,6 @@ const Events = () => {
 					</p>
 				</div>
 			</motion.header>
-
 			<main className="container mx-auto px-4 py-16">
 				<motion.section
 					className="mb-20"
@@ -84,7 +85,8 @@ const Events = () => {
 				>
 					<h2 className="text-3xl font-semibold mb-8 text-indigo-950 dark:text-indigo-100">Featured Events</h2>
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-						{upcomingEvents.map((event, index) => (
+						{
+						upcomingEvents.map((event, index) => (
 							<div
 								key={event.id}
 								className={`bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl`}
@@ -93,7 +95,7 @@ const Events = () => {
 								<img
 									src={event.imageUrl}
 									alt={event.title}
-									className="w-full h-56 object-cover"
+									className="w-full h-72 object-cover"
 								/>
 								<div className="p-6">
 									<h3 className="text-2xl font-semibold mb-2 text-indigo-950">{event.title}</h3>
@@ -106,16 +108,12 @@ const Events = () => {
 										<MapPin className="w-5 h-5 mr-2" />
 										<span>{event.location}</span>
 									</div>
-									<button className="bg-indigo-950 text-white px-4 py-2 rounded-md hover:bg-indigo-900 transition-colors duration-300 flex items-center group">
-										Register Now
-										<ArrowRight className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" />
-									</button>
 								</div>
 							</div>
-						))}
+						))
+						}
 					</div>
 				</motion.section>
-
 				<motion.section
 					initial={{ opacity: 0, y: 20 }}
 					whileInView={{ opacity: 1, y: 0 }}

@@ -1,12 +1,13 @@
 "use client"
 
-import * as React from "react"
+import { useState, useEffect } from "react"
 import { Menu } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { ModeToggle } from "./mode-toggle";
 import logo from "../assets/images/logo.png";
+import { useLocation } from "react-router-dom";
 
 const navItems = [
     { name: "Home", href: "/" },
@@ -16,11 +17,13 @@ const navItems = [
 ]
 
 export default function Navbar() {
-    const [isScrolled, setIsScrolled] = React.useState(false)
-    const [activePath, setActivePath] = React.useState("/")
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const location = useLocation();
+    const pathname = location.pathname;
+    const [isScrolled, setIsScrolled] = useState(false)
+    const [activePath, setActivePath] = useState(pathname)
 
-    React.useEffect(() => {
+    useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 10)
         }
@@ -36,21 +39,21 @@ export default function Navbar() {
     return (
         <header
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-                    ? "bg-background/70 backdrop-blur-lg supports-[backdrop-filter]:bg-background/60 shadow-lg"
-                    : "bg-transparent"
+                ? "bg-background/70 backdrop-blur-lg supports-[backdrop-filter]:bg-background/60 shadow-lg"
+                : "bg-transparent"
                 }`}
         >
             <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-20">
-                    <a
-                        href="/"
+                    <Link
+                        to="/"
                         className="flex items-center space-x-2"
                         onClick={(e) => {
                             e.preventDefault()
                             handleNavigation("/")
                         }}
                     >
-                        <img 
+                        <img
                             src={logo}
                             alt="Mian Logo"
                             height={50}
@@ -60,25 +63,26 @@ export default function Navbar() {
                         <span className="font-bold text-2xl bg-clip-text text-black dark:text-white">
                             BootStrap
                         </span>
-                    </a>
-
+                    </Link>
                     <div className="hidden md:flex space-x-1 items-center bg-muted/50 backdrop-blur-sm rounded-full px-2 py-1">
-                        {navItems.map((item) => (
-                            <Button
-                                key={item.name}
-                                variant="ghost"
-                                className={`text-sm font-medium transition-colors hover:text-primary rounded-full ${activePath === item.href
+                        {
+                            navItems.map((item) => (
+                                <Button
+                                    key={item.name}
+                                    variant="ghost"
+                                    className={`text-sm font-medium transition-colors hover:text-primary rounded-full ${activePath === item.href
                                         ? "bg-primary/10 text-primary"
                                         : "text-muted-foreground hover:bg-muted"
-                                    }`}
-                                onClick={() => handleNavigation(item.href)}
-                            >
-                                {item.name}
-                            </Button>
-                        ))}
+                                        }`}
+                                    onClick={() => handleNavigation(item.href)}
+                                >
+                                    {item.name}
+                                </Button>
+                            ))
+                        }
                         <ModeToggle />
                     </div>
-                    
+
                     <Link to="/joinus">
                         <Button
                             className="hidden md:inline-flex hover:from-primary-foreground hover:to-primary text-primary-foreground"
